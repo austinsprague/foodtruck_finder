@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 const program = require('commander');
-const { ftJSON, foodtrucksToString } = require('./foodtruck.js');
+const { getFoodTruckJSON, foodtrucksToString } = require('./foodtruck.js');
 const { prompt } = require('inquirer');
 
 const questions = [
@@ -27,7 +29,7 @@ function runPrompt(fts, stIdx, edIdx){
 }
 
 function runProgram() {
-  return ftJSON().then(foodtrucks=>{
+  return getFoodTruckJSON().then(foodtrucks=>{
     const startIdx = 0;
     const endIdx = 9;
     console.log('FOODTRUCK LENGTH: ', foodtrucks.length );
@@ -41,23 +43,12 @@ program
   .description('Food Truck Finder');
 
 program
-  .command('show-open-food-trucks [pagenumber]')
-  .alias('a')
-  .description('Show Open food trucks')
-  .action((pagenumber) => {
-    if (!pagenumber) {
-      pagenumber = 1;
-    }
-    console.log('PAGE ', pagenumber);
-    ftJSON(pagenumber);
-})
-
-program
   .command('show-open-food-trucks')
-  .alias('b')
+  .alias('o')
   .description('Show Open food trucks')
   .action(() => {
-    runProgram()
+    console.log('GETTING FOOD TRUCK DATA...');
+    runProgram();
   })
 
 

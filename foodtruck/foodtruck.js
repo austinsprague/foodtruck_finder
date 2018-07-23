@@ -104,7 +104,7 @@ foodtrucksToString = (foodtrucks, startIdx, endIdx) => {
 /* API REQUEST TO SFGOV TO RETREIVE ALL FOOD TRUCK data
     returns promise of food truck data
 */
-ftJSON = ()=>{
+getFoodTruckJSON = ()=>{
   return request({
     "method":"GET",
     "uri": "http://data.sfgov.org/resource/bbb8-hzi6.json",
@@ -118,6 +118,6 @@ ftJSON = ()=>{
 }
 
 module.exports = {
-  ftJSON,
+  getFoodTruckJSON,
   foodtrucksToString
 }
