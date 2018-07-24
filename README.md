@@ -19,9 +19,9 @@ $ npm install
 $ foodtruck show-open
 ```
 
-![Alt Text](http://www.giphy.com/gifs/9J588nLhlTu0AjVKYV)
+![Alt Text](https://media.giphy.com/media/9J588nLhlTu0AjVKYV/giphy.gif)
 
 ```Bash
 $ foodtruck o
 ```
-![Alt Text](http://www.giphy.com/gifs/t9aUSVp6KXQ5QboNLN)
+![Alt Text](https://media.giphy.com/media/t9aUSVp6KXQ5QboNLN/giphy.gif)
