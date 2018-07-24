@@ -1,37 +1,33 @@
+#!/usr/bin/env node
+
 const program = require('commander');
-const { ftJSON, foodtrucksToString } = require('./foodtruck.js');
+const { getOpenFoodTrucks, foodTrucksToString } = require('./foodtruck.js');
 const { prompt } = require('inquirer');
 
 const questions = [
   {
-    type : 'confirm',
-    name : 'confirmed',
-    message : 'Next Page ...'
-  },
-
+    type : 'input',
+    name : 'next',
+    message : 'CLICK ENTER FOR NEXT PAGE ...'
+  }
 ];
 
-function runPrompt(fts, stIdx, edIdx){
-  foodtrucksToString(fts, stIdx, edIdx);
-
-  if (edIdx > fts.length) {
+runPrompt = (foodtrucks, startIdx) => {
+  foodTrucksToString( foodtrucks, startIdx );
+  startIdx = startIdx + 10;
+  if (startIdx > foodtrucks.length) {
     return;
   }
-
-  const startIdx = edIdx + 1;
-  const endIdx = edIdx + 10;
-
-  prompt(questions).then(d=>{
-    runPrompt(fts, startIdx , endIdx );
+  prompt(questions).then(() => {
+    runPrompt(foodtrucks, startIdx);
   })
 }
 
-function runProgram() {
-  return ftJSON().then(foodtrucks=>{
+runProgram = () => {
+  getOpenFoodTrucks().then(foodtrucks => {
     const startIdx = 0;
-    const endIdx = 9;
-    console.log('FOODTRUCK LENGTH: ', foodtrucks.length );
-    runPrompt(foodtrucks, startIdx, endIdx);
+    console.log('Number of Food Trucks Open: ', foodtrucks.length);
+    runPrompt(foodtrucks, startIdx);
   })
 }
 
@@ -41,23 +37,12 @@ program
   .description('Food Truck Finder');
 
 program
-  .command('show-open-food-trucks [pagenumber]')
-  .alias('a')
-  .description('Show Open food trucks')
-  .action((pagenumber) => {
-    if (!pagenumber) {
-      pagenumber = 1;
-    }
-    console.log('PAGE ', pagenumber);
-    ftJSON(pagenumber);
-})
-
-program
-  .command('show-open-food-trucks')
-  .alias('b')
+  .command('show-open')
+  .alias('o')
   .description('Show Open food trucks')
   .action(() => {
-    runProgram()
+    console.log('GETTING FOOD TRUCK DATA...');
+    runProgram();
   })
 
 
