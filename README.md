@@ -16,6 +16,6 @@ $ npm install
 
 ### RUN commands
 ```Bash
-$ foodtruck show-open-food-trucks
+$ foodtruck show-open
 $ foodtruck o
 ```
