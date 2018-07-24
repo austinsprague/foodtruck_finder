@@ -17,5 +17,11 @@ $ npm install
 ### RUN commands
 ```Bash
 $ foodtruck show-open
+```
+
+![Alt Text](http://www.giphy.com/gifs/9J588nLhlTu0AjVKYV)
+
+```Bash
 $ foodtruck o
 ```
+![Alt Text](http://www.giphy.com/gifs/t9aUSVp6KXQ5QboNLN)
