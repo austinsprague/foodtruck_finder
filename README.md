@@ -9,6 +9,10 @@ A command line program that prints out a list of food trucks that are open at th
 * Sorted alphabetically by name
 * Filtered in Pages of 10 trucks, then waits for input from the user before displaying the page until there are no more food trucks to display.
 
+### Prerequisites to run locally
+1. Node
+2. npm
+
 ### Install Dependencies
 ```Bash
 $ npm install
