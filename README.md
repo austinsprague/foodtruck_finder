@@ -14,7 +14,7 @@ A command line program that prints out a list of food trucks that are open at th
 $ npm install
 ```
 
-## RUN commands
+### RUN commands
 ```Bash
 $ foodtruck show-open-food-trucks
 $ foodtruck o
