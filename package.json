@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "preferGlobal": true,
-  "bin": "./foodtruck/foodtruckprogram.js"
+  "bin": "./foodtruck/foodtruckprogram.js",
+  "scripts": {
+    "start": "node ./foodtruck/foodtruckprogram.js"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

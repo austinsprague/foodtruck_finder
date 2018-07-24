@@ -13,11 +13,9 @@ filterOpenTrucks = (allTrucks) => {
   }
   let openTrucks = [];
 
-  // LOOP THROUGH ARRAY OF ALL FOOD TRUCKS
   for(var i = 0; i<allTrucks.length; i++){
     const foodtruck = allTrucks[i];
 
-    // IF FOODTRUCK IS OPEN, CREATE & ADD NEW FOOD TRUCK OBJ TO openTrucks[]
     if(checkOpen(foodtruck)){
       const truck = {};
       truck.name = foodtruck.applicant;
@@ -25,7 +23,6 @@ filterOpenTrucks = (allTrucks) => {
       openTrucks.push(truck);
     }
   }
-  // RETURN ALPHEBETIZED array of currently open food trucks
   return openTrucks.sort(compare);
 }
 
@@ -35,11 +32,11 @@ filterOpenTrucks = (allTrucks) => {
 * openFoodTrucks array of filtered openTrucks
 * startIdx index of array to start the logging, used to log by pages of 10
 */
-foodtrucksToString = (openFoodTrucks, startIdx) => {
+foodTrucksToString = (openFoodTrucks, startIdx) => {
   if (!openFoodTrucks || openFoodTrucks == undefined || openFoodTrucks.length <0) {
     return;
   }
-
+  
   const endIdx = startIdx + 10;
 
   for (var i = startIdx; i < endIdx ; i++) {
@@ -51,8 +48,9 @@ foodtrucksToString = (openFoodTrucks, startIdx) => {
   }
 }
 
-/* API REQUEST TO SFGOV TO RETREIVE ALL FOOD TRUCK data
-    returns promise of food truck data, filtered in array of new objects
+/* *
+* GET API request to SFGOV to retrieve all food truck data
+* returns promise of food truck data, filtered and alphebetized in array of new foodtruck objects
 */
 getOpenFoodTrucks = () =>{
   return request({
@@ -68,5 +66,5 @@ getOpenFoodTrucks = () =>{
 
 module.exports = {
   getOpenFoodTrucks,
-  foodtrucksToString
+  foodTrucksToString
 }

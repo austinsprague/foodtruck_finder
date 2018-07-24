@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const { getOpenFoodTrucks, foodtrucksToString } = require('./foodtruck.js');
+const { getOpenFoodTrucks, foodTrucksToString } = require('./foodtruck.js');
 const { prompt } = require('inquirer');
 
 const questions = [
@@ -12,19 +12,19 @@ const questions = [
   }
 ];
 
-runPrompt = ( foodtrucks, startIdx ) => {
-  foodtrucksToString(foodtrucks, startIdx);
+runPrompt = (foodtrucks, startIdx) => {
+  foodTrucksToString( foodtrucks, startIdx );
   startIdx = startIdx + 10;
   if (startIdx > foodtrucks.length) {
     return;
   }
-  prompt( questions ).then( () => {
-    runPrompt( foodtrucks, startIdx );
+  prompt(questions).then(() => {
+    runPrompt(foodtrucks, startIdx);
   })
 }
 
 runProgram = () => {
-  getOpenFoodTrucks().then( foodtrucks => {
+  getOpenFoodTrucks().then(foodtrucks => {
     const startIdx = 0;
     console.log('Number of Food Trucks Open: ', foodtrucks.length);
     runPrompt(foodtrucks, startIdx);
